@@ -1,0 +1,5 @@
+{%for polls in poll%}
+name <a href="{% url 'choice_answer' polls.id%}"> {{polls.name}} </a>
+date {{polls.date}}
+points {{polls.points}}
+{%endfor%}

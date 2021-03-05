@@ -1,0 +1,10 @@
+{{questions.title}}
+{% for choice in choices%}
+{{choice.choice}}
+{% endfor %}
+{{total}}
+<form method="POST" action="">
+    {% csrf_token%}
+    {{form}}
+    <input type="submit" name="submit">
+</form>
