@@ -1,5 +1,6 @@
 {%for polls in poll%}
-name <a href="{% url 'question' polls.id%}"> {{polls.name}} </a>
 date {{polls.date}}
 points {{polls.points}}
+
+name <a href="{% url 'question' polls.id%}"> {{polls.name}} </a>
 {%endfor%}

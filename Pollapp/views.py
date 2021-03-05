@@ -17,7 +17,6 @@ def question_page(request, id_poll):
 
 
 def choice_answer_page(request, id_question):
-    total = 0
     question = Question.objects.get(id=id_question)
     choice = question.choiceansw_set.all()
     form = AnswerForm(initial={'question': question})
@@ -28,6 +27,8 @@ def choice_answer_page(request, id_question):
             if question.true_answer == form.cleaned_data['answer']:
                 question.poll.points+= 5
                 question.poll.save()
-                return  HttpResponse('правильный ответ ')
+                return HttpResponse('правильный ответ ')
+            else:
+                return HttpResponse('не правильно')
     return render(request, 'Poll/choice_answer.html',
-                  {'choices': choice, 'questions': question, 'form': form, 'total': total})
+                  {'choices': choice, 'questions': question, 'form': form,})
